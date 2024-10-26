@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+<div class="mb-3">
+    <label for="{{ form.city.vars.id }}" class="form-label">City</label>
+    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="mb-3">
+    <label for="{{ form.country.vars.id }}" class="form-label">Country</label>
+    {{ form_widget(form.country, {'attr': {'class': 'form-select'}}) }}
+</div>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

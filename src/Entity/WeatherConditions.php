@@ -86,12 +86,12 @@ class WeatherConditions
         return $this;
     }
 
-    public function isRain(): ?bool
+    public function getIsRain(): ?bool
     {
         return $this->is_rain;
     }
 
-    public function setRain(bool $is_rain): static
+    public function setIsRain(bool $is_rain): self
     {
         $this->is_rain = $is_rain;
 

@@ -1,0 +1,54 @@
+App\Entity\WeatherConditions:
+  properties:
+    date:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+    celsius:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+      - Type:
+          type: numeric
+          groups: [ 'create', 'edit' ]
+      - Range:
+          min: -100
+          max: 100
+          groups: [ 'create', 'edit' ]
+    is_rain:
+      - NotNull:
+          groups: [ 'create', 'edit' ]
+    rain_predict:
+      - Range:
+          min: 0
+          max: 100
+          groups: [ 'create', 'edit' ]
+    wind:
+      - NotNull:
+          groups: [ 'create', 'edit' ]
+    wind_power:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+    wind_direction:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+    conditions:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+    humidity:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+      - Range:
+          min: 0
+          max: 100
+          groups: [ 'create', 'edit' ]
+    location:
+      - NotNull:
+          groups: [ 'create', 'edit' ]
+
+App\Entity\Location:
+  properties:
+    city:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]
+    country:
+      - NotBlank:
+          groups: [ 'create', 'edit' ]

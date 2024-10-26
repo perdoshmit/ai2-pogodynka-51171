@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WeatherConditions{% endblock %}
+
+{% block body %}
+    <h1>WeatherConditions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ weather_condition.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ weather_condition.date ? weather_condition.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Celsius</th>
+                <td>{{ weather_condition.celsius }}</td>
+            </tr>
+            <tr>
+                <th>Is_rain</th>
+                <td>{{ weather_condition.isRain ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Rain_predict</th>
+                <td>{{ weather_condition.rainPredict }}</td>
+            </tr>
+            <tr>
+                <th>Wind</th>
+                <td>{{ weather_condition.wind ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Wind_power</th>
+                <td>{{ weather_condition.windPower }}</td>
+            </tr>
+            <tr>
+                <th>Wind_direction</th>
+                <td>{{ weather_condition.windDirection }}</td>
+            </tr>
+            <tr>
+                <th>Conditions</th>
+                <td>{{ weather_condition.conditions }}</td>
+            </tr>
+            <tr>
+                <th>Humidity</th>
+                <td>{{ weather_condition.humidity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_weather_conditions_index') }}">back to list</a>
+
+    <a href="{{ path('app_weather_conditions_edit', {'id': weather_condition.id}) }}">edit</a>
+
+    {{ include('weather_conditions/_delete_form.html.twig') }}
+{% endblock %}

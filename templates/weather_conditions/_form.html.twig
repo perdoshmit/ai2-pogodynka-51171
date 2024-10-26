@@ -1,0 +1,65 @@
+{{ form_start(form) }}
+
+<div class="mb-3">
+    <label for="{{ form.date.vars.id }}" class="form-label">Date</label>
+    {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date) }} {# Wyświetlenie błędów walidacji dla pola daty #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.celsius.vars.id }}" class="form-label">Temperature (°C)</label>
+    {{ form_widget(form.celsius, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.celsius) }} {# Wyświetlenie błędów walidacji dla pola temperatury #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.is_rain.vars.id }}" class="form-label">Is it Raining?</label>
+    {{ form_widget(form.is_rain, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.is_rain) }} {# Wyświetlenie błędów walidacji dla pola opadów #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.rain_predict.vars.id }}" class="form-label">Rain Prediction (%)</label>
+    {{ form_widget(form.rain_predict, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.rain_predict) }} {# Wyświetlenie błędów walidacji dla pola prognozy opadów #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.wind.vars.id }}" class="form-label">Is Wind</label>
+    {{ form_widget(form.wind, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.wind) }} {# Wyświetlenie błędów walidacji dla pola wiatru #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.wind_power.vars.id }}" class="form-label">Wind Power</label>
+    {{ form_widget(form.wind_power, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.wind_power) }} {# Wyświetlenie błędów walidacji dla pola siły wiatru #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.wind_direction.vars.id }}" class="form-label">Wind Direction</label>
+    {{ form_widget(form.wind_direction, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.wind_direction) }} {# Wyświetlenie błędów walidacji dla pola kierunku wiatru #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.conditions.vars.id }}" class="form-label">Weather Conditions</label>
+    {{ form_widget(form.conditions, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.conditions) }} {# Wyświetlenie błędów walidacji dla pola warunków pogodowych #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.humidity.vars.id }}" class="form-label">Humidity (%)</label>
+    {{ form_widget(form.humidity, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.humidity) }} {# Wyświetlenie błędów walidacji dla pola wilgotności #}
+</div>
+
+<div class="mb-3">
+    <label for="{{ form.location.vars.id }}" class="form-label">Location</label>
+    {{ form_widget(form.location, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.location) }} {# Wyświetlenie błędów walidacji dla pola lokalizacji #}
+</div>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

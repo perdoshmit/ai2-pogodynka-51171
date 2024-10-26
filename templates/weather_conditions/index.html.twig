@@ -46,6 +46,9 @@
         {% endfor %}
         </tbody>
     </table>
+    {% if is_granted('ROLE_MEASUREMENT_NEW') %}
+        <a href="{{ path('app_weather_conditions_new') }}">Create new</a>
+    {% endif %}
 
-    <a href="{{ path('app_weather_conditions_new') }}">Create new</a>
+
 {% endblock %}

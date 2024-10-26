@@ -10,10 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/weather/conditions')]
 final class WeatherConditionsController extends AbstractController
 {
+    #[IsGranted('ROLE_MEASUREMENT_INDEX')]
     #[Route(name: 'app_weather_conditions_index', methods: ['GET'])]
     public function index(WeatherConditionsRepository $weatherConditionsRepository): Response
     {
@@ -21,7 +23,7 @@ final class WeatherConditionsController extends AbstractController
             'weather_conditions' => $weatherConditionsRepository->findAll(),
         ]);
     }
-
+    #[IsGranted('ROLE_MEASUREMENT_NEW')]
     #[Route('/new', name: 'app_weather_conditions_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -43,7 +45,7 @@ final class WeatherConditionsController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    #[IsGranted('ROLE_MEASUREMENT_SHOW')]
     #[Route('/{id}', name: 'app_weather_conditions_show', methods: ['GET'])]
     public function show(WeatherConditions $weatherCondition): Response
     {
@@ -51,7 +53,7 @@ final class WeatherConditionsController extends AbstractController
             'weather_condition' => $weatherCondition,
         ]);
     }
-
+    #[IsGranted('ROLE_MEASUREMENT_EDIT')]
     #[Route('/{id}/edit', name: 'app_weather_conditions_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, WeatherConditions $weatherCondition, EntityManagerInterface $entityManager): Response
     {
@@ -69,7 +71,7 @@ final class WeatherConditionsController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    #[IsGranted('ROLE_MEASUREMENT_DELETE')]
     #[Route('/{id}', name: 'app_weather_conditions_delete', methods: ['POST'])]
     public function delete(Request $request, WeatherConditions $weatherCondition, EntityManagerInterface $entityManager): Response
     {

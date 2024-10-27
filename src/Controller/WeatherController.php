@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Location;
+
 use App\Repository\LocationRepository;
-use App\Repository\WeatherConditionsRepository;
+
+use App\Service\WeatherUtil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,8 +13,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class WeatherController extends AbstractController
 {
     #[Route('/weather/{city}/{country?}', name: 'app_weather_city')]
-    public function city(string $city, ?string $country, LocationRepository $locationRepository, WeatherConditionsRepository $weatherRepository): Response
+    public function city(string $city, ?string $country, LocationRepository $locationRepository, WeatherUtil $util): Response
     {
+
 
         $location = $locationRepository->findByCityAndCountry($city, $country);
 
@@ -22,7 +24,7 @@ class WeatherController extends AbstractController
         }
         $location = $location[0];
 
-        $measurements = $weatherRepository->findByLocation($location);
+        $measurements = $util->getWeatherForCountryAndCity($city, $country);
 
         return $this->render('weather/city.html.twig', [
             'location' => $location,

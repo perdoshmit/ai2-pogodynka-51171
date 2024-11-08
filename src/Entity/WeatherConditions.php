@@ -73,7 +73,10 @@ class WeatherConditions
 
         return $this;
     }
-
+    public function getFahrenheit(): float
+    {
+        return ($this->celsius * 9/5) + 32;
+    }
     public function getCelsius(): ?string
     {
         return $this->celsius;

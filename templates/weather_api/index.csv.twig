@@ -1,0 +1,9 @@
+city,country,date,celsius,fahrenheit
+{% if measurements is not empty %}
+
+{% endif %}
+{% for measurement in measurements %}
+<br>
+{{ city }},{{ country }},{{ measurement.date }},{{ measurement.celsius }},{{ measurement.fahrenheit }}
+
+{% endfor %}
